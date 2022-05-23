@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "391049655392",
+    "project_id": "unamelio",
+    "storage_bucket": "unamelio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391049655392:android:64e06b0cc027da5e737f05",
+        "android_client_info": {
+          "package_name": "com.example.authentication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391049655392-02n399r98kdq2pk4qkfh43ocsiqidd8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDif2NULP2_S9Q_r_IMirGjRL4nyY0t1UE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391049655392-02n399r98kdq2pk4qkfh43ocsiqidd8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
