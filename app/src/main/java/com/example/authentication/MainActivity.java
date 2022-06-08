@@ -1,12 +1,16 @@
 package com.example.authentication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etPass;
     private Button btnLogin;
     private Button btnRegister,btnLogOut;
+    Context context ;
 
 
     @Override
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btn_registrar);
         btnLogOut= findViewById(R.id.btn_logOut);
 
+         context = getApplicationContext();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,8 +126,12 @@ public class MainActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     //Pasar a la pantalla de home
                     Log.d("MainActivity", "Usuario logeado con exito" + task.isSuccessful());
-                    getInfo();
+                   // getInfo();
+                    goHome();
 
+                }else {
+                    Toast toast = Toast.makeText(context, "Error al iniciar sesion",  Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
         });
@@ -135,10 +145,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     private void getInfo(){
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
         String email = user.getEmail();
         String name = user.getDisplayName();
         String uid = user.getUid();
@@ -147,6 +157,14 @@ public class MainActivity extends AppCompatActivity {
 
         String info= "El correo es :"+ email + "\n"+ "El nombre es: "+ name + " \n " +"El UID es :"+ uid +"\n" + "la  url de la foto " ;
         tvInfo.setText(info);
+
+    }
+
+
+    private void goHome(){
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
+
 
     }
 

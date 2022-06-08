@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">authentication</string>
+    <string name="title_Scanner">Scanner</string>
+    <string name="title_dowload">Admin</string>
+    <string name="title_profile">Perfil</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>
