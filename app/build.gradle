@@ -29,6 +29,7 @@ android {
 }
 
 dependencies {
+    def room_version = "2.4.2"
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
@@ -67,8 +68,9 @@ dependencies {
     //firestore
     implementation 'com.google.firebase:firebase-firestore'
 
-
-
+    //Room
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 
 
 }
