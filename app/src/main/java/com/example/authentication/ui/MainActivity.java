@@ -1,4 +1,4 @@
-package com.example.authentication;
+package com.example.authentication.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.authentication.R;
+import com.example.authentication.database.AppDatabase;
+import com.example.authentication.ui.Home;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -36,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        AppDatabase.getInstance(this.getApplicationContext());
+
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
