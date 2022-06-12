@@ -15,9 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.authentication.R;
 import com.example.authentication.database.AppDatabase;
 import com.example.authentication.database.dao.CredentialDAO;
@@ -39,7 +41,8 @@ import java.util.List;
 
 public class ScannerFragment extends Fragment {
 
-    Button btnScanner, btnGetCredential ;
+    Button btnScanner ;
+    LottieAnimationView imgAvilable;
     TextView tvResponse;
     View vista ;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -65,9 +68,9 @@ public class ScannerFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         vista = inflater.inflate(R.layout.fragment_scanner, container, false);
-        btnGetCredential = vista.findViewById(R.id.getCredential);
+        imgAvilable = vista.findViewById(R.id.imgAvilable);
         btnScanner=vista.findViewById(R.id.btn_scanner);
-        tvResponse = vista.findViewById(R.id.tv_response);
+
 
         btnScanner.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,17 +85,7 @@ public class ScannerFragment extends Fragment {
                 integrator.initiateScan();
             }
         });
-        btnGetCredential.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                List<Credential> credentials = scannerViewModel.getAllCredentials();
-                for (Credential cre:credentials) {
-                    Toast.makeText(getActivity(), "Todo salio BIEN" +  cre.getNombre() , Toast.LENGTH_SHORT).show();
 
-
-                }
-            }
-        });
         // Inflate the layout for this fragment
         return vista;
     }
@@ -110,8 +103,22 @@ public class ScannerFragment extends Fragment {
                }
                Toast.makeText(getActivity(), "Todo salio BIEN" + numCuenta , Toast.LENGTH_SHORT).show();
 
-               tvResponse.setText(numCuenta);
-                readDataFireStore();
+
+               //aqui buscar id
+                Credential credentialLocal = scannerViewModel.findCredentialById(Integer.parseInt(numCuenta));
+                if (credentialLocal != null){
+                    //agregar una salida que muestre
+                    //tvResponse.setText(credentialLocal.getNombre());
+                    int succes = R.raw.success;
+                    imgAvilable.setAnimation(succes);
+
+                }else {
+                  //  tvResponse.setText("nose encontro alumno");
+                    int failure = R.raw.failure;
+                    imgAvilable.setAnimation(failure);
+
+                }
+                // readDataFireStore();
            }
         }
     }
