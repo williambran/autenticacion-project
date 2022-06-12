@@ -24,7 +24,6 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
         BottomNavigationView navView = findViewById(R.id.bottomNavigationView); // el bootomnaviation ...el de abajo
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         loadFragment(scannerFragment);

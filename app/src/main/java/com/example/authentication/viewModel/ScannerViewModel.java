@@ -25,6 +25,11 @@ public class ScannerViewModel extends ViewModel {
         credentialRepository.insert(credetials);
     }
 
+    public Credential findCredentialById(int credentialId){
+
+        return credentialRepository.findCredentialById(credentialId);
+    }
+
     public List<Credential> getAllCredentials() {
         return  credentialRepository.getAllCrdential();
     }
