@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -103,9 +104,9 @@ public class ScannerFragment extends Fragment {
                }
                Toast.makeText(getActivity(), "Todo salio BIEN" + numCuenta , Toast.LENGTH_SHORT).show();
 
-
+                loadData(Integer.parseInt(numCuenta));
                //aqui buscar id
-                Credential credentialLocal = scannerViewModel.findCredentialById(Integer.parseInt(numCuenta));
+          /*      Credential credentialLocal = scannerViewModel.findCredentialById(Integer.parseInt(numCuenta));
                 if (credentialLocal != null){
                     //agregar una salida que muestre
                     //tvResponse.setText(credentialLocal.getNombre());
@@ -117,12 +118,32 @@ public class ScannerFragment extends Fragment {
                     int failure = R.raw.failure;
                     imgAvilable.setAnimation(failure);
 
-                }
+                }*/
                 // readDataFireStore();
            }
         }
     }
 
+    void loadData(int idCredential){
+        scannerViewModel.findCredentialById(idCredential).observe(this, new Observer<Credential>() {
+            @Override
+            public void onChanged(Credential credential) {
+
+                if (credential != null){
+
+                    int succes = R.raw.success;
+                    imgAvilable.setAnimation(succes);
+
+                }else {
+                    //  tvResponse.setText("nose encontro alumno");
+                    int failure = R.raw.failure;
+                    imgAvilable.setAnimation(failure);
+
+                }
+
+            }
+        });
+    }
 
     public void readDataFireStore(){
         db.collection("credencial")
