@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
+
         AppDatabase.getInstance(this.getApplicationContext());
 
         setContentView(R.layout.activity_main);
@@ -54,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
         btnLogOut= findViewById(R.id.btn_logOut);
 
          context = getApplicationContext();
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser.getUid() != null){
+            goHome();
+        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
