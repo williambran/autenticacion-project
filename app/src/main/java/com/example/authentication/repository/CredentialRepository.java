@@ -9,6 +9,6 @@ public interface CredentialRepository {
 
     List<Credential> getAllCrdential();
     Credential findCredentialById(int idCredential);
-    void insert(List<Credential> credential);
+    void insertList(List<Credential> credential);
     void delete(Credential credential);
 }
