@@ -71,8 +71,8 @@ public class ScannerFragment extends Fragment {
         vista = inflater.inflate(R.layout.fragment_scanner, container, false);
         imgAvilable = vista.findViewById(R.id.imgAvilable);
         btnScanner=vista.findViewById(R.id.btn_scanner);
-
-
+        int search = R.raw.search;
+        imgAvilable.setAnimation(search);
         btnScanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ProfileFragment">
+    tools:context=".ui.ProfileFragment"
+    android:background="@color/white"
+    >
 
 
     <de.hdodenhof.circleimageview.CircleImageView
