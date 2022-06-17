@@ -12,7 +12,7 @@
     <FrameLayout
         android:id="@+id/fragmentSelect"
         android:layout_width="409dp"
-        android:layout_height="669dp"
+        android:layout_height="672dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
